@@ -1,0 +1,62 @@
+.boxBodyContainer{
+    display: grid;
+    /* grid-template-rows: 3fr 3fr 1fr; */
+    grid-template-areas: 
+        "photoContainer textContainer closeBtn";
+    margin: 100px auto;
+
+    max-width: 70.5%;
+    max-height: 177px;
+    aspect-ratio: 3 / 1;
+
+    border-radius: 10px;
+
+    background-color: #F2F5F8;
+}
+
+.cropTextContainer{
+    flex-direction: column;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+
+    grid-area: textContainer;
+}
+
+.cropTextContainer p:first-child{
+    color: #C64D32;
+}
+
+.cropTextContainer p:not(:first-of-type){
+font-family: Inter;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+
+letter-spacing: -0.02em;
+text-decoration-line: underline;
+cursor: pointer;
+}
+
+.closeBtn{
+    /* position: inherit;
+    top: -10px;
+    right: -10px; */
+    margin: 5% 0 0 70%;
+    cursor: pointer;
+    grid-area: closeBtn;
+}
+
+.closeBtn:hover{
+    opacity: 0.7;
+}
+
+.photoContainer{
+    grid-area: photoContainer;
+}
+
+.alignContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+}

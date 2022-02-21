@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./global.css";
 
-function App() {
+import { AvatarUpload } from "./Components/AvatarUploader";
+import { UploadFail } from "./Components/UploadFail";
+import { useState } from "react";
+import { CropContainer } from "./Components/CropContainer";
+
+export function App() {
+  const [state, setState] = useState<number>(0);
+  const [data, setData] = useState(null);
+
+  const childToParent = (childData : any) => {
+    setState(childData);
+  }
+
+  const uploadDataModel = (childData : any) => {
+    setData(childData);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {
+        state === 0? 
+        <AvatarUpload childToParent={childToParent} uploadDataModel={uploadDataModel} /> 
+        :
+        state === 1?
+        <UploadFail childToParent={childToParent}/>
+        :
+        <CropContainer rawImage={data} childToParent={childToParent}/>
+      }
+
+      
+    </>
   );
 }
-
-export default App;
